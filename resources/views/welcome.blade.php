@@ -1,12 +1,10 @@
 @extends('layouts.app')
-
-{{-- ナビゲーションバー --}}
-        @include('commons.navbar')
-
+@include('commons.navbar')
 @section('content')
     @if (Auth::check())
-        {{ Auth::user()->name }}
+        view('mypage')
     @else
+        
         <div class="center jumbotron">
             <div class="text-center">
                 <h1>Welcome to the Microposts</h1>
