@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'BooksController@index');
+Route::get('/', 'BooksController@index')->name('mypage');
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::resource('book_register','BooksController');
     
-    Route::get('register', 'BookRegisterController@showRegisterForm')->name('book.register');
-    Route::post('register', 'BookRegisterController@getBooksData')->name('book.post');
+    Route::get('books/serch', 'BookRegisterController@showRegisterForm')->name('books.serch');
+    Route::post('books/create', 'BookRegisterController@getBooksData')->name('books.create');
+    Route::post('books/store', 'BookRegisterController@store')->name('books.store');
 });

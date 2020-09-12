@@ -24,6 +24,9 @@ class CreateReviewsTable extends Migration
             // 外部キー制約
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+            
+            // user_idとbook_idの組み合わせの重複を許さない
+            $table->unique(['user_id', 'book_id']);
         });
         
         

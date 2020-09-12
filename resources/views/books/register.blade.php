@@ -1,12 +1,12 @@
 @extends('layouts.app')
     
-    <div class='containar-fluid'>
+    <div class='container-fluid'>
         <div class='row'>
             @include('commons.menubar')
             <div class='col-md-10'>
                 <h2>本の登録</h2>
                 <div class='col-md-6'>
-                    {!! Form::open(['route' => 'book.post']) !!} 
+                    {!! Form::open(['route' => 'books.create']) !!} 
                     
                     <div class='form-group'>
                         {!! Form::label('isbn','ISBN') !!}

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
-    protected $fillable = ['content','recommendation'];
+    protected $fillable = ['content','recommendation', 'user_id', 'book_id'];
     
     /**
      * このレビューに対する本。(Bookモデルとの関係性を定義)

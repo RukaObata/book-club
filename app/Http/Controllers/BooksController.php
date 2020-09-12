@@ -12,11 +12,10 @@ class BooksController extends Controller
         if (\Auth::check()){
             $user = \Auth::user();
             //$books = $user->books()->orderBy('created_at', 'desc')->paginate(5);
-            
-            $data = [
-                'user' => $user,
-                 ];
-            return view('users.mypage', $data);
+
+            return view('users.mypage', [
+                "user" => $user,
+                ]);
         }else {
             return view('welcome');
         }
