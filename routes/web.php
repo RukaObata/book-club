@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'BooksController@index')->name('mypage');
+Route::get('/', 'BooksController@mypage')->name('mypage');
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -26,10 +26,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
         Route::get('followings', 'UsersController@followings')->name('users.followings');
         Route::get('followers', 'UsersController@followers')->name('users.followers');
-        
     });
     
-    
+    Route::get('index', 'BooksController@index')->name('users.books');
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     
     Route::resource('book_register','BooksController');

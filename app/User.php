@@ -42,7 +42,7 @@ class User extends Authenticatable
      */
     public function books()
     {
-        return $this->hasMany(Book::class);
+        return $this->belongsToMany(Book::class, 'reviews', 'user_id', 'book_id');
     }
     
     /**

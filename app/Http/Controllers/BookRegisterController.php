@@ -72,7 +72,6 @@ class BookRegisterController extends Controller
 
     public function store(Request $request)
     {
-        //$value = $request->recommendation;
         
         /**
          * 
