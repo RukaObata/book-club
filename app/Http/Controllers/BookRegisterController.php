@@ -40,6 +40,7 @@ class BookRegisterController extends Controller
             ]);
         }else if($data_serch == true){
             
+            $data = DB::table('books')->where('isbn', $value)->first();
             
             return view('books.confirm', [
                 "data" => $data,

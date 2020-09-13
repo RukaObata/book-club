@@ -12,7 +12,7 @@
                 </div>
                 <div class='col-md-6'></div>
                 <div class='col-md-10'>
-                    {{ $data->book_pic }}
+                    <img src= "{{ $data->book_pic }}" >
                     {{ $data->title }}
                     {{ $data->author }}
                     {{ $data->publisher }}
@@ -53,4 +53,4 @@
             
             </div>
         </div>
-    </div>
+    

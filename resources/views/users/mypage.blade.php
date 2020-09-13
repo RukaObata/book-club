@@ -5,6 +5,7 @@
         <div class-'col-md-10'>
             @if (Auth::check())
                 私の今のおすすめの本
+                <img src="{{ $latest_one->book_pic }}">
                 {{ $latest_one->title }}
                 {{ $latest_one->author }}
                 {{ $latest_one->publisher }}
