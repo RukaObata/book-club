@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use DB;
 
 class UsersController extends Controller
 {
@@ -78,6 +79,20 @@ class UsersController extends Controller
         return view('users.followers', [
             'user' => $user,
             'users' => $followers,
+        ]);
+    }
+    
+    /**
+     * 全ユーザーを表示するアクション
+     */
+    public function allusers()
+    {
+        $user = \Auth::user();
+        $allusers = DB::table('users')->paginate(10);
+        
+        return view('users.allusers', [
+            "user" => $user,
+            "users" => $allusers
         ]);
     }
 }

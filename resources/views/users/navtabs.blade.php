@@ -1,13 +1,12 @@
 <ul class="nav nav-tabs nav-justified mb-3">
-    {{-- ユーザ詳細タブ --}}
-    {{--
+    {{-- ユーザ一覧タブ --}}
     <li class="nav-item">
-        <a href="{{ route('users.show', ['user' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.show') ? 'active' : '' }}">
-            TimeLine
-            <span class="badge badge-secondary">{{ $user->microposts_count }}</span>
+        <a href="{{ route('users.users', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.show') ? 'active' : '' }}">
+            ユーザー一覧
+            <span class="badge badge-secondary">{{ $user->users_count }}</span>
         </a>
     </li>
-    --}}
+    
     {{-- フォロー一覧タブ --}}
     <li class="nav-item">
         <a href="{{ route('users.followings', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.followings') ? 'active' : '' }}">

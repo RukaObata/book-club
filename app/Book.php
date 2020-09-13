@@ -23,4 +23,12 @@ class Book extends Model
     {
         return $this->hasMany(Review::class);
     }
+    
+    /**
+     * この本に関係するモデルの件数をロードする。
+     */
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount(['users()']);
+    }
 }

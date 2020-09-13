@@ -23,15 +23,27 @@ class BookRegisterController extends Controller
     
     public function getBooksData(Request $request)
     {
+        $user = \Auth::user();
         $value = $request['isbn'];
         
         $data_serch = DB::table('books')->where('isbn', $value)->exists();
+        $user_review = $user->reviews()->exists();
         
-        if ($data_serch == true){
+        if  ($data_serch == true && $user_review == true) {
+            
             $data = DB::table('books')->where('isbn', $value)->first();
+            $review = Db::table('reviews')->where('user_id', $user->id)->where('book_id', $data->id)->first();
+            return view('reviews.edit', [
+                "review" => $review,
+                "data" => $data,
+                "user" => $user
+            ]);
+        }else if($data_serch == true){
+            
             
             return view('books.confirm', [
-                "data" => $data
+                "data" => $data,
+                "user" => $user,
             ]);
         }else {
             $base_url = 'https://api.openbd.jp/v1/get?isbn=';
@@ -63,7 +75,8 @@ class BookRegisterController extends Controller
             $data = DB::table('books')->where('isbn', $value)->first();
             
             return view('books.confirm', [
-                "data" => $data
+                "data" => $data,
+                "user" => $user,
             ]);
         }
         

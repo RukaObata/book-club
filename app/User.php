@@ -61,6 +61,14 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'user_follow', 'follow_id', 'user_id')->withTimestamps();
     }
     
+    /**
+     * このユーザが持つレビュー。(Reviewモデルとの関係を定義)
+     */
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+    
     /**$userIdで指定されたユーザをフォローする。
      * 
      * @param int $userId
@@ -114,10 +122,18 @@ class User extends Authenticatable
     }
     
     /**
+     * ユーザ一覧を取得するアクション
+     */
+    public function get_all_users()
+    {
+        $all_users = DB::table('users')->get();
+    }
+    
+    /**
      * このユーザに関係するモデルの件数をロードする。
      */
     public function loadRelationshipCounts()
     {
-        $this->loadCount(['followings', 'followers']);
+        $this->loadCount(['followings', 'followers','books', 'reviews']);
     }
 }
