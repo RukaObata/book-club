@@ -23,6 +23,11 @@ class BookRegisterController extends Controller
     
     public function getBooksData(Request $request)
     {
+        // バリデーション
+        $request->validate([
+            'isbn' => 'required|max:13',
+        ]);
+        
         $user = \Auth::user();
         $value = $request['isbn'];
         
@@ -86,17 +91,10 @@ class BookRegisterController extends Controller
 
     public function store(Request $request)
     {
-        
-        /**
-         * 
-        if ($request->recommendation == 1){
-            $value = true;
-            return $value;
-        }else{
-            $value = false;
-            return $value;
-        };
-        */
+        // バリデーション
+        $request->validate([
+            'content' => 'required|max:1000',
+        ]);
         
         Review::create([
             "user_id" => \Auth::user()->id,

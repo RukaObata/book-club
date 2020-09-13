@@ -1,17 +1,17 @@
-<nav class='col-md-2 d-none d-md-block bg-light sidebar height: 100%'>
+
+    <nav class='col-md-2 d-none d-md-block bg-light sidebar height: 100%'>
     <div class='sidebar-sticky'>
         <div class = 'mt-3'>
-            {{-- {!! Form::open(['route' =>'']) !!} --}}
-        <div class='form-group d-flex flex-row mb-5'>
-            {!! Form::text('', null, ['class' => 'form-control']) !!}
-            {!! Form::submit('検索') !!}
-        </div>
-        {{-- {!! Form::close() !!} --}}
+            
+            {!! Form::open(['route' =>'serch.serching']) !!}
+            <div class='form-group d-flex flex-row mb-5'>
+                {!! Form::text('keyword', null, ['class' => 'form-control']) !!}
+                {!! Form::submit('検索') !!}
+            </div>
+            {!! Form::close() !!}
         </div>
         
-        <div class='max-width: 80%'>
-            <img src="..." alt="..." class="rounded-circle">
-        </div>
+        
             {{ \Auth::user()->name }}
             {!! link_to_route('users.show', 'ユーザー詳細', ['user' => $user->id]) !!}
         
@@ -26,4 +26,5 @@
         </ul>
     </div>
 </nav>
+
     

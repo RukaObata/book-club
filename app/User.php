@@ -69,6 +69,7 @@ class User extends Authenticatable
         return $this->hasMany(Review::class);
     }
     
+    
     /**$userIdで指定されたユーザをフォローする。
      * 
      * @param int $userId
